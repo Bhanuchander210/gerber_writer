@@ -4,7 +4,8 @@
 version = '0.3.1'
 
 from gerber_writer import (DataLayer, Path, set_generation_software)
-    
+import os
+
 set_generation_software('Karel Tavernier', 'gerber_writer_example_outline.py', version)    
 profile_layer = DataLayer('Profile,NP')    
 profile = Path()
@@ -18,5 +19,5 @@ profile.arcto((150, 100), (160, 100), '-')
 profile.lineto((0, 100))
 profile.lineto((0, 0))
 profile_layer.add_traces_path(profile, 0.5, 'Profile')
-with open('gerbers\gerber_writer_example_outline.gbr', 'w') as outfile:
+with open(os.path.join('gerbers', 'gerber_writer_example_outline.gbr'), 'w') as outfile:
     profile_layer.dump_gerber(outfile)

@@ -5,6 +5,7 @@ version = '0.3.1'
 from math import sqrt
 from random import uniform
 from time import time
+import os
 
 from gerber_writer import (DataLayer, Circle)
 
@@ -32,7 +33,7 @@ for _ in range(ITERATIONS):
     start_point = next_point
 end_add_traces = time()
 print('Add lines (s):', end_add_traces - end_add_pad)
-with open('gerbers\gerber_writer_random.gbr', 'w') as outfile:
+with open(os.path.join('gerbers', 'gerber_writer_random.gbr'), 'w') as outfile:
     layer.dump_gerber(outfile)
 end_dump = time()
 print('Dump to file (s):', end_dump - end_add_traces)
