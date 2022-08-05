@@ -25,7 +25,7 @@ fw = pa_design.feeder_width * 10 ** 3
 
 version = '0.3.1'
 set_generation_software('patch_antenna', 'patch_antenna_gerber_writer', version)
-profile_layer = DataLayer('Profile,NP')
+profile_layer = DataLayer('Copper,L1,Top')
 profile = Path()
 profile.moveto((0, 0))
 profile.lineto((pl, 0))
@@ -36,6 +36,6 @@ profile.lineto((pl, (pw/2)-(fw/2)+fw))
 profile.lineto((pl, pw))
 profile.lineto((0, pw))
 profile.lineto((0, 0))
-profile_layer.add_region(profile, 'Profile')
+profile_layer.add_region(profile, 'Other,Antenna')
 with open(os.path.join('gerbers', 'gerber_writer_antenna_design_2.4GHz.gbr'), 'w') as outfile:
     profile_layer.dump_gerber(outfile)
